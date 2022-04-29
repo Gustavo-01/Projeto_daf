@@ -1,11 +1,10 @@
 
-function [output] = solve_F(alpha_0,beta,gama,v,Tc1,Tc2,T,PsiMax,PsiMin)
+function [output] = solve_F(alpha_0,beta,gama,n,Tc1,Tc2,T,PsiMax,PsiMin,dPsi)
     alpha_1 = @ (T) alpha_0 * (T-Tc1);
     alpha_2 = @ (T) alpha_0 * (T-Tc2);
     
-    F_funct = @(psi1,psi2) alpha_1(T) * psi1^2 + alpha_2(T) * psi2^2 + beta*(psi1^4+psi2^4)/2 + gama*( psi2^6 ) / 3 - v * ( 2 * psi1 * psi2 );
+    F_funct = @(psi1,psi2) alpha_1(T) * psi1^2 + alpha_2(T) * psi2^2 + beta*(psi1^4+psi2^4)/2 + gama*( psi2^6 ) / 3 - n * ( 2 * psi1 * psi2 );
     
-    dPsi = 0.05;
     
     k = 0;
     mins = [];
@@ -29,7 +28,6 @@ function [output] = solve_F(alpha_0,beta,gama,v,Tc1,Tc2,T,PsiMax,PsiMin)
     
     if k == 0
         output = [0,0];
-        "Psi not found"
     else
         output = mins(k,:);
     end

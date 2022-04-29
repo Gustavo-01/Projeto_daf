@@ -7,7 +7,7 @@ function [output] = solve_F_noCoup(alpha_0,beta,gama,Tc1,Tc2,T,PsiMax,PsiMin)
     k = 0;
     mins = [];
     i = 0;
-    Psi = PsiMin:0.02:PsiMax;
+    Psi = PsiMin:0.2:PsiMax;
     for psi_1 = Psi
         i=i+1;
         g=0;
@@ -23,6 +23,7 @@ function [output] = solve_F_noCoup(alpha_0,beta,gama,Tc1,Tc2,T,PsiMax,PsiMin)
             end
         end
     end
+    
     
     if k == 0
         output = [0,0];

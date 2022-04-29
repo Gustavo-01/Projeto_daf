@@ -4,10 +4,12 @@ function [output] = solve_F(alpha_0,beta,gama,v,Tc1,Tc2,T,PsiMax,PsiMin)
     
     F_funct = @(psi1,psi2) alpha_1(T) * psi1^2 + alpha_2(T) * psi2^2 + beta*(psi1^4+psi2^4)/2 + gama*( psi2^6 ) / 3 - v * ( 2 * psi1 * psi2 );
     
+    dPsi = 0.01;
+    
     k = 0;
     mins = [];
     i = 0;
-    Psi = PsiMin:0.02:PsiMax;
+    Psi = PsiMin-4*dPsi:dPsi:PsiMax+4*dPsi;
     for psi_1 = Psi
         i=i+1;
         g=0;
@@ -23,6 +25,9 @@ function [output] = solve_F(alpha_0,beta,gama,v,Tc1,Tc2,T,PsiMax,PsiMin)
             end
         end
     end
+    
+%    figure(1)
+%    mesh(F)
     
     if k == 0
         output = [0,0];

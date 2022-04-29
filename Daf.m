@@ -4,15 +4,16 @@ close all
 clc
 
 alpha_0 = 2;
-beta = 2;
+beta = 1;
 gama = 1;
-v = 0.8;
+v = 0.5;
 dT = 0.05;
+%dT = 0.1;
 Tc1 = 130;
 Tc2 = 100;
 Tf = 160;
 
-PsiMax = 12; 
+PsiMax = 17; 
 PsiMin = 0;
 
 
@@ -49,9 +50,9 @@ for t = T
 end
 %%
 figure(1)
-plot(T(1:length(psi_1_coup)),psi_1_noCoup,'r--')
+plot(T(1:length(psi_1_noCoup)),psi_1_noCoup,'r--')
 hold on
-plot(T(1:length(psi_1_coup)),psi_2_noCoup,'b--')
+plot(T(1:length(psi_1_noCoup)),psi_2_noCoup,'b--')
 
 figure(2)
 plot(T(1:length(psi_1_coup)),psi_1_coup,'r')

@@ -18,7 +18,7 @@ function [output] = solve_F(alpha_0,beta,gama,n,Tc1,Tc2,T,PsiMax,PsiMin,dPsi)
             F(i,g) = F_funct(psi_1,psi_2);
             % FIND MINIMUM
             if i > 2 && g > 2
-                if(F(i,g-1) > F(i-1,g-1) && F(i-2,g) > F(i-1,g-1) && F(i-1,g) > F(i-1,g-1) && F(i-1,g-2) > F(i-1,g-1))
+                if(F(i-2,g-2) > F(i-1,g-1) && F(i-1,g-2) > F(i-1,g-1) && F(i,g-2) > F(i-1,g-1) && F(i-2,g-1) > F(i-1,g-1) && F(i,g-1) > F(i-1,g-1) && F(i-2,g) > F(i-1,g-1) && F(i-1,g) > F(i-1,g-1) && F(i,g) > F(i-1,g-1))
                     k=k+1;
                     mins(k,:) = [Psi(i-1),Psi(g-1)];
                 end                
